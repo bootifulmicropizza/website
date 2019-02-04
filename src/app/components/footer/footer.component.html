@@ -1,0 +1,17 @@
+<footer>
+
+    <a mat-list-item routerLink="/pizzas">Pizzas</a>
+    <a mat-list-item routerLink="/sides">Sides</a>
+    <a mat-list-item routerLink="/desserts">Desserts</a>
+    <a mat-list-item routerLink="/drinks">Drinks</a>
+
+    <button *ngIf="!isAuthenticated" routerLink="/login" mat-menu-item>Login</button>
+    <button *ngIf="!isAuthenticated" routerLink="/register" mat-menu-item>Register</button>
+
+    <a mat-list-item routerLink="/about">About</a>
+    <a mat-list-item routerLink="/contact">Contact</a>
+    <a mat-list-item routerLink="/privacy">Privacy</a>
+
+  <p>&copy; Ian Collington</p>
+  <p id="build-version">Build BUILD_VERSION_PLACEHOLDER</p>
+</footer>

@@ -1,0 +1,40 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: website
+  namespace: pizza
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: website
+    spec:
+      containers:
+      - name: website
+        image: <replaced_at_deploy_time>
+        imagePullPolicy: Always
+        env:
+          - name: BUILD_DATE
+            value: BUILD_DATE_PLACEHOLDER
+        resources:
+          requests:
+            cpu: "0.25"
+            memory: 128Mi
+          limits:
+            cpu: "1"
+            memory: 512Mi
+        ports:
+        - containerPort: 80
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 80
+          initialDelaySeconds: 300
+          timeoutSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 80
+          initialDelaySeconds: 60
+          timeoutSeconds: 15

@@ -1,0 +1,25 @@
+#hero {
+    background: url(/assets/hero.jpg) no-repeat;
+    background-size: cover;
+    height: calc(100vh - 64px);
+}
+
+#hero-text {
+    color: white;
+    font-size: 32pt;
+    width: 440px;
+    font-family: Helvetica;
+    display: block;
+    position: absolute;
+    top: 150px;
+    text-align: right;
+    right: 20%;
+}
+
+#hero-arrow {
+    color: white;
+    position: absolute;
+    left: 50%;
+    top: 85%;
+    font-size: 50pt;
+}

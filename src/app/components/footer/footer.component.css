@@ -1,0 +1,9 @@
+footer {
+    background: #4F4F4F;
+    color: white;
+    text-align: center;
+}
+
+#build-version {
+    font-size: 9pt;
+}

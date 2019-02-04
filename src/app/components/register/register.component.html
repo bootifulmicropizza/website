@@ -1,0 +1,46 @@
+<app-page-title></app-page-title>
+
+<div class="container">
+
+  <form class="register-form">
+    <mat-form-field class="full-width">
+      <input matInput placeholder="First Name" [formControl]="firstNameFormControl">
+      <mat-error *ngIf="firstNameFormControl.hasError('required')">
+        First Name is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <input matInput placeholder="Last Name" [formControl]="lastNameFormControl">
+      <mat-error *ngIf="lastNameFormControl.hasError('required')">
+        Last Name is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <input matInput placeholder="E-mail" [formControl]="emailFormControl">
+      <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+        Please enter a valid email address
+      </mat-error>
+      <mat-error *ngIf="emailFormControl.hasError('required')">
+        Email is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="full-width" hintLabel="Between 6 and 20 characters">
+      <input type="password" id="password" matInput placeholder="Password" [formControl]="passwordFormControl">
+      <mat-error *ngIf="passwordFormControl.hasError('required')">
+        Password is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="full-width" hintLabel="Between 6 and 20 characters">
+      <input type="password" id="confirmPassword" matInput placeholder="Confirm Password" [formControl]="confirmPasswordFormControl">
+      <mat-error *ngIf="confirmPasswordFormControl.hasError('required')">
+        Confirm Password <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <button mat-button>Register</button>
+  </form>
+</div>

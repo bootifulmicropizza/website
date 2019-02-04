@@ -1,0 +1,13 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: website
+  namespace: pizza
+spec:
+  rules:
+    - host: www.bootifulmicropizza.com
+      http:
+        paths:
+        - backend:
+            serviceName: website
+            servicePort: 80

@@ -1,0 +1,52 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport="false" [ngClass]="{hidden: !(isHandset$ | async)}"
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'" [mode]="(isHandset$ | async) ? 'over' : 'side'"
+    [opened]="!(isHandset$ | async)">
+    <mat-toolbar>Menu</mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item routerLink="/">Home</a>
+      <a mat-list-item routerLink="/pizzas">Pizzas</a>
+      <a mat-list-item routerLink="/sides">Sides</a>
+      <a mat-list-item routerLink="/desserts">Desserts</a>
+      <a mat-list-item routerLink="/drinks">Drinks</a>
+      <a mat-list-item routerLink="/about">About</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar>
+      <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <mat-icon>local_pizza</mat-icon>
+      <a mat-list-item id="logo" routerLink="/">Bootiful Micro Pizza</a>
+      
+      <span class="toolbar-spacer"></span>
+
+      <div [ngClass]="{hidden: (isHandset$ | async)}">
+        <a mat-list-item routerLink="/">Home</a>
+        <a mat-list-item routerLink="/pizzas">Pizzas</a>
+        <a mat-list-item routerLink="/sides">Sides</a>
+        <a mat-list-item routerLink="/desserts">Desserts</a>
+        <a mat-list-item routerLink="/drinks">Drinks</a>
+        <a mat-list-item routerLink="/about">About</a>
+      </div>
+
+      <mat-menu #appMenu="matMenu">
+        <button *ngIf="isAuthenticated" routerLink="/myaccount/orders" mat-menu-item>My Orders</button>
+        <button *ngIf="isAuthenticated" routerLink="/myaccount" mat-menu-item>My Account</button>
+        <button *ngIf="isAuthenticated" (click)="logout()" mat-menu-item>Logout</button>
+        <button *ngIf="!isAuthenticated" routerLink="/login" mat-menu-item>Login</button>
+        <button *ngIf="!isAuthenticated" routerLink="/register" mat-menu-item>Register</button>
+      </mat-menu>
+
+      <button mat-icon-button routerLink="/basket">
+        <mat-icon matBadge="1" matBadgeColor="warn">shopping_basket</mat-icon>
+      </button>
+      <button mat-icon-button [matMenuTriggerFor]="appMenu">
+        <mat-icon>person</mat-icon>
+      </button>
+    </mat-toolbar>
+    <ng-content></ng-content>
+  </mat-sidenav-content>
+</mat-sidenav-container>
