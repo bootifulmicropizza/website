@@ -33,7 +33,7 @@ export class ProductListComponent implements OnInit {
   loadPizzas(): void {
     this.productService.getPizzas().subscribe(
       data => {
-        this.products = data.products;
+        this.products.push(...data.products, ...data.products, ...data.products);
         this.isLoading = false;
       },
       error => this.handleError()
